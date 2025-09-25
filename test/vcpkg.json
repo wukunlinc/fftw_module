@@ -1,6 +1,6 @@
 {
   "dependencies": [
-    "fftw3",
-    "gtest"
+	  "fftw3",
+	  "gtest"
   ]
 }

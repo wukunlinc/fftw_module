@@ -5,9 +5,12 @@
     <None Include="vcpkg-configuration.json" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="fftw_module.ixx" />
-    <ClCompile Include="fftw_vector.ixx" />
-    <ClCompile Include="fftw_data_support.ixx" />
-    <ClCompile Include="fftw_plan.ixx" />
+    <ClCompile Include="fftw_module.cppm" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="fftw_data_support.h" />
+    <ClInclude Include="fftw_plan.h" />
+    <ClInclude Include="fftw_vector.h" />
+    <ClInclude Include="fftw_module.h" />
   </ItemGroup>
 </Project>

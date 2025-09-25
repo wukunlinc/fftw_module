@@ -1,25 +1,11 @@
 // test.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
+#include "gtest/gtest.h"
 
-import fftw_data_support;
-import fftw_vector;
-import fftw_module;
-import std;
-
-
-
-int main()
+int main(int argc, char **argv)
 {
-	//f::m::p ptest(1.f, 1.f);
-
-
-    fftw::vector<double> v = { 1, 3, 5, 7, 23, 15, 87, 91};
-
-    auto plan = fftw::fftw_plan_dft(1, nullptr, nullptr, nullptr, 1, 1);
-
-    auto func = ::fftw_plan_dft;
-    func(1, nullptr, nullptr, nullptr, 1, 1);
-    return 0;
+	testing::InitGoogleTest(&argc, argv);
+	return RUN_ALL_TESTS();
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
