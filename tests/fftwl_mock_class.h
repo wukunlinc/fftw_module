@@ -60,7 +60,7 @@ namespace testing
 		MOCK_METHOD(int, fftwl_planner_nthreads, ());
 		MOCK_METHOD(int, fftwl_init_threads, ());
 		MOCK_METHOD(void, fftwl_cleanup_threads, ());
-		MOCK_METHOD(void, fftwl_threads_set_callback, ());
+		MOCK_METHOD(void, fftwl_threads_set_callback, (void (*parallel_loop)(void* (*work)(char*), char* jobdata, size_t elsize, int njobs, void* data), void* data));
 		MOCK_METHOD(void, fftwl_make_planner_thread_safe, ());
 		MOCK_METHOD(int, fftwl_export_wisdom_to_filename, (const char*));
 		MOCK_METHOD(void, fftwl_export_wisdom_to_file, (FILE*));

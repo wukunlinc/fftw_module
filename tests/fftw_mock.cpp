@@ -207,7 +207,7 @@ void fftw_cleanup_threads(void)
 }
 void fftw_threads_set_callback(void (*parallel_loop)(void* (*work)(char*), char* jobdata, size_t elsize, int njobs, void* data), void* data)
 {
-	testing::mock_fftw::mock_instance().fftw_threads_set_callback();
+	testing::mock_fftw::mock_instance().fftw_threads_set_callback(parallel_loop, data);
 }
 void fftw_make_planner_thread_safe(void)
 {

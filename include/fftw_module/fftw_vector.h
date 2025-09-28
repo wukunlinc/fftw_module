@@ -49,7 +49,7 @@ namespace fftw
 		return !(x == y);
 	}
 
-	export template<supported_type T>
+	template<supported_type T>
 	using vector = std::vector<T, allocator<T>>;
 }
 
