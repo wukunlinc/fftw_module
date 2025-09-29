@@ -1,10 +1,20 @@
 cmake_minimum_required(VERSION 3.29...4.1)
 
-find_package(fftw3 CONFIG REQUIRED)
+find_package(FFTW3 CONFIG REQUIRED)
 
 add_library(fftw_cxx_module)
 
-target_sources(fftw_cxx_module PRIVATE FILE_SET CXX_MODULES FILES fftw_module.cppm)
+set(CMAKE_CXX_SCAN_FOR_MODULES ON)
+
+if(NOT COMMAND configure_cpp_module_target)
+    function(configure_cpp_module_target target)
+        target_sources(${target} PUBLIC FILE_SET CXX_MODULES FILES fftw_module.cppm)
+    endfunction()
+endif()
+
+configure_cpp_module_target(fftw_cxx_module)
+
+
 
 target_include_directories(fftw_cxx_module
   PRIVATE $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>

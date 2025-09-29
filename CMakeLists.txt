@@ -17,6 +17,7 @@ OPTION(BUILD_FFTW3_MODULE "Build the FFTW3 wrapper as a C++20 module" OFF)
 
 # Build
 if (BUILD_FFTW3_MODULE)
+    set(CMAKE_CXX_SCAN_FOR_MODULES ON)
     add_subdirectory(cxx_module)
 endif()
 

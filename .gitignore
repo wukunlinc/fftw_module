@@ -2,3 +2,5 @@ build/
 .vs/
 vcpkg_installed/
 CMakeFiles/
+CMakeCache.txt
+Testing/

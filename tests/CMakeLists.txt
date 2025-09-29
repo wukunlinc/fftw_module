@@ -37,6 +37,7 @@ target_compile_options(fftw_module_mock
           $<$<OR:$<CXX_COMPILER_ID:GNU>,$<CXX_COMPILER_ID:Clang>>:-pedantic>)
 
 if(BUILD_FFTW3_MODULE)
+  set(CMAKE_CXX_SCAN_FOR_MODULES ON)
   target_link_libraries(fftw_module_mock PRIVATE GTest::gtest GTest::gmock fftw_cxx_module)  
   target_compile_definitions(fftw_module_mock PRIVATE USE_MODULE)
 else()
