@@ -2,8 +2,8 @@ cmake_minimum_required(VERSION 3.29...4.1)
 
 include(CTest)
 
-find_package(gtest CONFIG REQUIRED)
-find_package(fftw3 CONFIG REQUIRED)
+find_package(GTest CONFIG REQUIRED)
+find_package(FFTW3 CONFIG REQUIRED)
 
 add_executable(fftw_module_mock)
 target_sources(fftw_module_mock

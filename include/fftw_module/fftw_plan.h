@@ -30,7 +30,8 @@ namespace fftw
 	};
 
 	template <typename T, typename ...U>
-	concept pack_is = requires { requires std::same_as<T, U...>; };
+	concept pack_is = sizeof...(U) == 1 &&
+		std::same_as<T, typename std::tuple_element<0, std::tuple<U...>>::type>;
 
 	template <typename T, typename U, typename... option_t>
 	concept valid_c2c = !std::floating_point<T> && !std::floating_point<U> && pack_is<direction, option_t...>;
@@ -286,7 +287,7 @@ namespace fftw
 		}
 
 		void execute(input_t* input, output_t* output)
-			requires !split
+			requires (!split)
 		{
 			auto raw_input_ptr = raw_cast(input);
 			auto raw_output_ptr = raw_cast(output);
