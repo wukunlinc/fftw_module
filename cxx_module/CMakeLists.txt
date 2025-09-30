@@ -4,8 +4,6 @@ find_package(FFTW3 CONFIG REQUIRED)
 
 add_library(fftw_cxx_module)
 
-set(CMAKE_CXX_SCAN_FOR_MODULES ON)
-
 if(NOT COMMAND configure_cpp_module_target)
     function(configure_cpp_module_target target)
         target_sources(${target} PUBLIC FILE_SET CXX_MODULES FILES fftw_module.cppm)
