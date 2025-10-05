@@ -2,21 +2,22 @@
 #define FFTW_PLAN_H
 
 #include <concepts>
+#include <memory>
 
 #include "fftw3.h"
 #include "fftw_data_support.h"
 
 namespace fftw
 {
-	 enum class direction :int
+	enum class direction :int
 	{
 		forward  = FFTW_FORWARD,
 		backward = FFTW_BACKWARD
 	};
 
-	 using r2r_kind = ::fftw_r2r_kind_do_not_use_me;
+	using r2r_kind = ::fftw_r2r_kind_do_not_use_me;
 
-	 enum optimization : unsigned int
+	enum optimization : unsigned int
 	{
 		measure         = FFTW_MEASURE,
 		destroy_input   = FFTW_DESTROY_INPUT,
@@ -65,21 +66,15 @@ namespace fftw
 		{ container.data() } -> std::same_as<const U*>;
 	};
 
-	template <typename... option_t>
-	static auto get_opt(const option_t& ...option)
-	{
-		return std::get<0>(std::tie(option...));
-	}
+	using guru_params = fftw_iodim64_do_not_use_me;
 
-	 using guru_params = fftw_iodim64_do_not_use_me;
-
-	 namespace split
+	namespace split
 	{
 		struct r2c {};
 		struct c2r {};
 	}
 
-	 template <typename input_t, typename output_t, bool split = false>
+	template <typename input_t, typename output_t, bool split = false>
 	class plan
 	{
 		using primitive_type = primitive<input_t>::type;
@@ -112,6 +107,12 @@ namespace fftw
 		static auto raw_cast(T* p)
 		{
 			return reinterpret_cast<raw_type<T>*>(p);
+		}
+
+		template <typename... option_t>
+		auto get_opt(const option_t& ...option)
+		{
+			return std::get<0>(std::tie(option...));
 		}
 
 	public:

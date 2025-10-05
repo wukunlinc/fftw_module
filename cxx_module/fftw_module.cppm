@@ -11,4 +11,11 @@ export namespace fftw {
 	using fftw::plan;
 	using fftw::r2r_kind;
 	using fftw::vector;
+
+namespace split
+{
+	using fftw::split::c2r;
+	using fftw::split::r2c;
+}
+
 }

@@ -14,11 +14,9 @@ project(fftw_module VERSION 0.1
 include(GNUInstallDirs)
 
 # Build
-if (MSVC_SELECTED)
-    OPTION(BUILD_FFTW3_MODULE "Build the FFTW3 wrapper as a C++20 module" OFF)
-    if (BUILD_FFTW3_MODULE)
-        add_subdirectory(cxx_module)
-    endif()
+OPTION(BUILD_FFTW3_MODULE "Build the FFTW3 wrapper as a C++20 module" OFF)
+if (BUILD_FFTW3_MODULE)
+    add_subdirectory(cxx_module)
 endif()
 
 add_library(fftw_module INTERFACE)
