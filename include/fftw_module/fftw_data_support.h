@@ -6,11 +6,15 @@
 
 namespace fftw
 {
+	// To find the underlying primitive time
 	template <typename T>
 	struct primitive : std::type_identity<T> {};
 
 	template <typename T>
 	struct primitive<std::complex<T>> : std::type_identity<T> {};
+
+	template <typename T>
+	using primitive_t = primitive<T>::type;
 
 	template <typename T, typename... fftw3_data_types>
 	concept is_fftw3_type = (std::same_as<typename primitive<T>::type, fftw3_data_types> || ...);

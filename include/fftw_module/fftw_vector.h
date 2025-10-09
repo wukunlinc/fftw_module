@@ -12,7 +12,7 @@ namespace fftw
 	struct allocator
 	{
 		using value_type = T;
-		using primitive_type = primitive<T>::type;
+		using primitive_type = primitive_t<T>;
 
 		allocator() = default;
 

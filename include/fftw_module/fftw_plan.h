@@ -49,7 +49,7 @@ namespace fftw
 	template <typename T, typename U>
 	concept valid_io_types =
 		supported_type<T> && supported_type<U> &&
-		std::same_as<typename primitive<T>::type, typename primitive<U>::type>;
+		std::same_as<primitive_t<T>, primitive_t<U>>;
 
 	template <typename T, typename U, typename... option_t>
 	concept valid_option = 
@@ -79,10 +79,10 @@ namespace fftw
 		struct c2r {};
 	}
 
-	 template <typename input_t, typename output_t, bool split = false>
+	template <typename input_t, typename output_t, bool split = false>
 	class plan
 	{
-		using primitive_type = primitive<input_t>::type;
+		using primitive_type = primitive_t<input_t>;
 		using plan_impl_type = std::remove_pointer_t<
 			std::conditional_t<std::is_same_v<primitive_type, float>, ::fftwf_plan,
 			std::conditional_t<std::is_same_v<primitive_type, double>, ::fftw_plan,
