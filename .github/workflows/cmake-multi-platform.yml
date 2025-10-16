@@ -103,10 +103,10 @@ jobs:
       # Note: if the preset misses the "configuration", it is possible to explicitly select the
       # configuration with the `--config` flag, e.g.:
       # run: cmake --build --preset ninja-vcpkg --config Release
-      - name: Build (Release configuration)
+      - name: Build 
         run: |
           cmake --build build
       # Test the whole project with CTest, again Release configuration only.
-      - name: Test (Release configuration)
+      - name: Test 
         run: |
-          ctest --test-dir build
+          ctest --test-dir build -C Debug
