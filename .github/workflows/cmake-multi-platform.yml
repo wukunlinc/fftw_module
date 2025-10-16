@@ -90,6 +90,7 @@ jobs:
         if: runner.os == 'Windows'
         run: >
           cmake --preset vcpkg
+          -G "Visual Studio 17 2022"
           -DVCPKG_TARGET_TRIPLET=x64-windows-static
           -DCMAKE_CXX_COMPILER=${{ matrix.cpp_compiler }}
           -DBUILD_FFTW3_MODULE=ON
