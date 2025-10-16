@@ -90,7 +90,7 @@ jobs:
         run: >
           cmake --preset vcpkg
           -DCMAKE_CXX_COMPILER=${{ matrix.cpp_compiler }}
-          -DCMAKE_MAKE_PROGRAM=/usr/bin/ninja
+          -DCMAKE_MAKE_PROGRAM=/opt/local/bin/ninja
           -G "Ninja Multi-Config"
 
       #- name: check-format
