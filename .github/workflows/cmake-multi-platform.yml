@@ -22,13 +22,13 @@ jobs:
           - os: windows-latest
             c_compiler: cl
             cpp_compiler: cl
-          - os: ubuntu-latest
+          - os: ubuntu-24.04
             c_compiler: clang
             cpp_compiler: clang++
         exclude:
           - os: windows-latest
             c_compiler: clang
-          - os: ubuntu-latest
+          - os: ubuntu-24.04
             c_compiler: cl
     env:
       # Indicates the location of the vcpkg as a Git submodule of the project repository.
