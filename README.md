@@ -1,3 +1,5 @@
+[![CMake on multiple platforms](https://github.com/wukunlinc/fftw_module/actions/workflows/cmake-multi-platform.yml/badge.svg)](https://github.com/wukunlinc/fftw_module/actions/workflows/cmake-multi-platform.yml)
+
 # FFTW Module #
 A C++20 wrapper for FFTW3 that enables RAII and CTAD. Plan creation can be made by initializing `fftw::plan` with arguments similar to the plan creation functions in FFTW3.
 
