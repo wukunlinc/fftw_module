@@ -12,8 +12,6 @@ endif()
 
 configure_cpp_module_target(fftw_cxx_module)
 
-
-
 target_include_directories(fftw_cxx_module
   PRIVATE $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>
           $<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include>)
@@ -26,7 +24,5 @@ target_link_libraries(fftw_cxx_module
 
 target_compile_features(fftw_cxx_module PUBLIC cxx_std_20)
 
-if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME AND BUILD_TESTING)
-    set_property(TARGET fftw_cxx_module PROPERTY  
-        MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
-endif()
+set_property(TARGET fftw_cxx_module PROPERTY
+  MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
