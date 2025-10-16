@@ -86,7 +86,17 @@ jobs:
       # in the CMakePresets.json file.
       # This step also runs vcpkg with Binary Caching leveraging GitHub Action cache to
       # store the built packages artifacts.
-      - name: Restore from cache the dependencies and generate project files
+      - name: Config-Windows
+        if: runner.os == 'Windows'
+        run: >
+          cmake --preset vcpkg
+          -DVCPKG_TARGET_TRIPLET=x64-windows-static
+          -DCMAKE_CXX_COMPILER=${{ matrix.cpp_compiler }}
+          -DBUILD_FFTW3_MODULE=ON
+          -B build
+          
+      - name: Config-Linux
+        if: runner.os == 'Linux'
         run: >
           cmake --preset vcpkg
           -DCMAKE_CXX_COMPILER=${{ matrix.cpp_compiler }}
