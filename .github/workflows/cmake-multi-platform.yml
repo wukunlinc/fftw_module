@@ -90,6 +90,8 @@ jobs:
         run: >
           cmake --preset vcpkg
           -DCMAKE_CXX_COMPILER=${{ matrix.cpp_compiler }}
+          -DBUILD_FFTW3_MODULE=ON
+          -B build
 
       #- name: check-format
       #  if: runner.os == 'Linux'
