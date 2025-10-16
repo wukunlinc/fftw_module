@@ -90,7 +90,7 @@ jobs:
         run: >
           cmake --preset vcpkg
           -DCMAKE_CXX_COMPILER=${{ matrix.cpp_compiler }}
-          -GNinja
+          -G "Ninja Multi-Config"
 
       #- name: check-format
       #  if: runner.os == 'Linux'
