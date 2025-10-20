@@ -45,7 +45,14 @@ import fftw_module;
 ```
 `fftw::plan` is a class template that knows the input and output types, which are used to call the correct plan construction and execution functions.
 
-For more usage examples, please check [the](tests/fftw_tests.cpp) [test](tests/fftwf_tests.cpp) [code](tests/fftwl_tests.cpp)
+For more usage examples, please check [the](tests/fftw_tests.cpp) [test](tests/fftwf_tests.cpp) [code](tests/fftwl_tests.cpp) and search for FFTW3 functions.
+
+# Dependencies #
+- FFTW3: the code only needs the API header to build, users need to handle library linking
+- GTest is used for testing
+- VCPKG is used to download and build FFTW3 and GTest
+- CMake 3.29+ is used to build C++20 module and tests
+- If using headers only, all files are under [include](include)
 
 # Supported FFTW3 features #
 - Supported data types: float, double, long double
@@ -63,6 +70,7 @@ For more usage examples, please check [the](tests/fftw_tests.cpp) [test](tests/f
 - The position of the plan optimization flag argument is changed. In FFTW3 interfaces, the optimization flag is  specified last in plan creation functions, here, they are the second last argument when creating complex-to-complex or real-to-real functions. The reason being I want to make a single constructor for these plans and deduce the plan depending on whether direction, R2R transform type is given, and the only way I can think of is to stick this argument to the end as a parameter pack. Let me know if there are more elegant ways to implement this.
 - `std::complex` is used for complex types, which has the same memory layout as the FFTW3 complex types such as `fftw_complex`
 - Optimization flags and transform directions are now enums instead of macros
+- For the split Guru interfaces, [tags are used to distinguish C2R and R2C transforms](https://github.com/wukunlinc/fftw_module/blob/e33b268202bc85e41b807ffbaf6e704f22ca6ff7/tests/fftw_tests.cpp#L344)
 
 # Currently unsupportecd featuers #
 The following features are not included in the wrapper:
