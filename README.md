@@ -45,7 +45,7 @@ import fftw_module;
 ```
 `fftw::plan` is a class template that knows the input and output types, which are used to call the correct plan construction and execution functions.
 
-For more usage examples, please check [the](tests/fftw_tests.cpp) [test](tests/fftwf_tests.cpp) [code](tests/fftwl_tests.cpp) and search for FFTW3 functions.
+For more usage examples, please check [this table](plans.md) and [the](tests/fftw_tests.cpp) [test](tests/fftwf_tests.cpp) [code](tests/fftwl_tests.cpp).
 
 # Dependencies #
 - FFTW3: the code only needs the API header to build, users need to handle library linking
