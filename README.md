@@ -5,7 +5,7 @@ A C++20 wrapper for FFTW3 that enables RAII and CTAD. Plan creation can be made 
 
 This wrapper can either be added as a header-only library or a C++20 module. In both bases, the user needs to handle their own FFTW3 dependency.
 
-Module support is tested with VS2022 on Windows and Ninja+Clang on Linux. I have not been able to get modules to work using g++-14 at this moment.
+Module support is tested with VS2022/VS2026 on Windows and Ninja + Clang 18.1.3/GCC 15.2.1 on Linux.
 
 ## Example ##
 The following code is copied from the tutorial of FFTW3:
